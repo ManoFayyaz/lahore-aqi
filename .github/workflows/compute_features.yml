@@ -1,0 +1,36 @@
+name: Compute AQI Features
+
+on:
+  schedule:
+    - cron: '0 11 * * *'  # 4:00 PM Pakistan Time (UTC+5 = 11 AM UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compute-features:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run compute_features.py
+      run: python compute_features.py
+
+    - name: Commit feature updates
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add lahore_aqi_features.csv
+        git commit -m "📈 Daily AQI feature update"
+        git push
