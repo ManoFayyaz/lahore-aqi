@@ -23,11 +23,11 @@ jobs:
 
     - name: Run AQI script
       run: python aqi.py
-
+      
     - name: Commit updated CSV
       run: |
-        git config user.name "ManoFayyaz"
+        git config user.name "Mano Fayyaz"
         git config user.email "mehnoorfayyaz06@gmail.com"
-        git add lahore_aqi.csv
-        git commit -m "Update Lahore AQI data"
-        git push
+        git add lahore_aqi.csv || echo "No changes to add"
+        git commit -m "📊 Daily AQI update" || echo "No changes to commit"
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
