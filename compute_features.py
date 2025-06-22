@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("C:/Personal Files/Lahore-AQI/lahore_aqi.csv")
+df = pd.read_csv("lahore_aqi.csv")
 
 df["timestamp"]=pd.to_datetime(df["timestamp"])
 
