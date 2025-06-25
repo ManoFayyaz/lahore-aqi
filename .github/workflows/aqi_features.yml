@@ -26,13 +26,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run AQI script
+      - name: Run AQI Features script
         run: python compute_features.py
 
       - name: Commit updated CSV
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add lahore_aqi.csv || echo "No changes to add"
+          git add lahore_aqi_features.csv || echo "No changes to add"
           git commit -m "📊 Daily AQI update" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
