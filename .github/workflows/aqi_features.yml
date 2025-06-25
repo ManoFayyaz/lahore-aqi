@@ -1,4 +1,4 @@
-name: Auto-fetch Lahore AQI data
+name: Features of Lahore AQI data
 
 on:
   # Runs every day at 2:00 PM Pakistan time (which is 9:00 AM UTC)
