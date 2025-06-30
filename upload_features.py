@@ -8,7 +8,7 @@ df = pd.read_csv("lahore_aqi_features.csv")
 df["timestamp"] = pd.to_datetime(df["timestamp"])
 
 # Login to Hopsworks
-project = hopsworks.login(api_key_value="RI6aVh8JRlgiuVaz.bGgoZw1u0Lf54YkBoZyivKakNFHWMHcQE3z5hCk4GOpTbHKf7jHLol2cXmSfZSMC")
+project = hopsworks.login(api_key_value="HOPSWORKS_API_KEY")
 fs = project.get_feature_store()
 
 feature_group = fs.get_or_create_feature_group(
